@@ -26,3 +26,12 @@ End-to-end lakehouse-style analytics project using NYC Yellow Taxi parquet data 
 - Airport dependency ratio by zone
 - “What-if” scenario: 50% airport traffic drop → revenue impact
 - Board-level executive summary view
+
+## Local regression check
+
+Run `python3 -m unittest discover -s tests -v` with Python 3.11 or later.
+The test executes the executive-summary aggregation over synthetic joined tables
+using the standard-library SQLite engine. It checks distinct zone counts, trip
+counts, revenue, and the airport-drop scenario. Only `CREATE OR REPLACE VIEW`
+is adapted to SQLite's `CREATE VIEW` syntax. This is a local SQL logic check,
+not validation of Athena deployment, CTAS, or S3 access.

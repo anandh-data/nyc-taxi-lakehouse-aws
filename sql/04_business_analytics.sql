@@ -51,7 +51,7 @@ FROM zone_metrics;
 CREATE OR REPLACE VIEW nyc_taxi_db.yellow_taxi_executive_summary AS
 SELECT
     zone_risk_level AS risk_category,
-    COUNT(DISTINCT pulocationid) AS number_of_zones,
+    COUNT(DISTINCT b.pulocationid) AS number_of_zones,
     COUNT(*) AS total_trips,
     CAST(ROUND(SUM(total_amount),2) AS DECIMAL(18,2)) AS total_revenue,
     CAST(ROUND(AVG(total_amount),2) AS DECIMAL(18,2)) AS avg_fare,
